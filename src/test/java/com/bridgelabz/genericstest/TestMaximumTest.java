@@ -71,4 +71,19 @@ public class TestMaximumTest {
         Integer max = TestMaximum.findAnyMax(1, 2, 3);
         Assert.assertThat(max, CoreMatchers.equalTo(3));
     }
+    @Test
+    public void any_type_return_max_integer_by_generic_class() {
+        Integer max = new TestMaximum<Integer>(1, 2, 3).findAnyMax();
+        Assert.assertThat(max, CoreMatchers.equalTo(3));
+    }
+    @Test
+    public void any_type_return_max_float_by_generic_class() {
+        Float max = new TestMaximum<Float>(1.01f, 2.02f, 3.03f).findAnyMax();
+        Assert.assertThat(max, CoreMatchers.equalTo(3.03F));
+    }
+    @Test
+    public void any_type_return_max_string_by_generic_class() {
+        String max = new TestMaximum<String>("Apple", "Banana", "Peach").findAnyMax();
+        Assert.assertThat(max, CoreMatchers.equalTo("Peach"));
+    }
    }
