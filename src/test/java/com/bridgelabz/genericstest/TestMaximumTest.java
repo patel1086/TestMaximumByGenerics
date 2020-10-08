@@ -86,4 +86,15 @@ public class TestMaximumTest {
         String max = new TestMaximum<String>("Apple", "Banana", "Peach").findAnyMax();
         Assert.assertThat(max, CoreMatchers.equalTo("Peach"));
     }
+    @Test
+    public void if_integer_max_return_third_multi_parameter() {
+        Integer max = TestMaximum.findAnyMax(1,2,3,4,5,6,7);
+        Assert.assertThat(max, CoreMatchers.equalTo(7));
+    }
+    @Test
+    public void if_float_max_return_third_multi_parameter() {
+        Float max = TestMaximum.findAnyMax(1.0f,2.0f,3.0f,4.0f,6.0f);
+        Assert.assertThat(max, CoreMatchers.equalTo(6.0f));
+    }
+
    }
