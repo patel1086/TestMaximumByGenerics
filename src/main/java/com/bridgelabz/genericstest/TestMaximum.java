@@ -49,6 +49,7 @@ public class TestMaximum<T extends Comparable<T>> {
 	            max = num2;
 	        if (num3.compareTo(max) > 0)
 	            max = num3;
+	        printMax(num1,num2,num3, max);
 	        return max;
 	}
 	//Max of any type by creating generic class and method
@@ -58,8 +59,18 @@ public class TestMaximum<T extends Comparable<T>> {
 	//Generic Method to find maximum of more than three variables of any type
 	public static <T extends Comparable<T>> T findAnyMax(T... elements) {
 	        List<T> list = (List<T>) Arrays.asList(elements).stream().sorted().collect(Collectors.toList());
+	        printMax(list.get(elements.length - 1));
 	        return list.get(elements.length - 1);
 	    }
+	//Method for printing max of three variables of any type
+    public static <T> void printMax(T var1, T var2, T var3, T max) {
+        System.out.println("The maximum in among " + var1 + "," + var2 + "," + var3 + " is " + max);
+    }
+
+    //Method for printing max of three or more variables of any type
+    public static <T> void printMax(T max) {
+        System.out.println("The maximum among the list of variables provided is: " + max);
+    }
 	public static void main(String[] args) {
         System.out.println("Welcome to Test Maximum");
         System.out.println("Max Integer among these value is: "+findMax(1,2,3));
@@ -69,5 +80,4 @@ public class TestMaximum<T extends Comparable<T>> {
         System.out.println("Max Integer by creating Generic class: "+new TestMaximum<Integer>(1, 2, 3).findAnyMax());
         System.out.println("Max Integer by creating Generic class for more than three variable: "+findAnyMax(1,2,3,4));
     }
-
 }
